@@ -74,4 +74,11 @@ msh />
 - 该BSP UART默认使用 TX--->6;RX--->8 引脚，可根据板载设计自行修改；
 - 该协议栈移植自 Apache 开源方案 Nimble，相关介绍及 API 说明可参考``http://mynewt.apache.org/latest/network/docs/index.html``。
 
+## 相关接口
 
+- Applications下的application.c:int main(void)为用户程序入口，用于执行默认程序。
+- packages\NimBLE-latest\apps\blehr\src\blehr.c:已被移植到RTthread下的相关功能。在Keil项目的nimble下。其中MSH_CMD_EXPORT_ALIAS(ble_hr, ble_hr, "bluetoooth heartrate senson sample");语句即为将static int ble_hr(void)函数（HRS）暴露到FinSH终端，使其可以被FinSH访问。
+
+## 待解决：
+
+- FinSH的开机自启动项（类似start.sh）
